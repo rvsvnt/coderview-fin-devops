@@ -1,0 +1,4 @@
+apiVersion: v2
+name: flask-app
+description: A Flask application for financial transactions
+version: 0.1.0

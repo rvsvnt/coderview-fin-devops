@@ -1,0 +1,15 @@
+replicaCount: 3
+image:
+  repository: flask-app
+  tag: latest
+service:
+  type: LoadBalancer
+  port: 80
+database:
+  user: user
+  password: password
+  host: rds-endpoint
+  name: transactions
+redis:
+  host: redis-endpoint
+  port: 6379

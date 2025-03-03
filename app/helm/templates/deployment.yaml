@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: flask-app
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+      - name: flask-app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+        env:
+        - name: DB_USER
+          value: {{ .Values.database.user | quote }}
+        - name: DB_PASSWORD
+          value: {{ .Values.database.password | quote }}
+        - name: DB_HOST
+          value: {{ .Values.database.host | quote }}
+        - name: DB_NAME
+          value: {{ .Values.database.name | quote }}
+        - name: REDIS_HOST
+          value: {{ .Values.redis.host | quote }}
+        - name: REDIS_PORT
+          value: {{ .Values.redis.port | quote }}
