@@ -397,6 +397,8 @@ Istio is used as the service mesh to provide:
 
     Ensures secure communication between services in the Istio service mesh.
 
+![alt text](image.png)
+
 ### Monitoring and Observability
 **Prometheus**
 
